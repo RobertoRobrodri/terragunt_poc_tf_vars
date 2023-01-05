@@ -4,9 +4,9 @@ terraform {
 
 
 locals {
-	common 		= read_terragrunt_config(find_in_parent_folders("common.hcl"))
-	region 		= local.common.locals.gcp_region
-	project_id 	= local.common.locals.tf_state_project_id
+	common 					= read_terragrunt_config(find_in_parent_folders("common.hcl"))
+	region 					= local.common.locals.gcp_region
+	tf_state_project_id 	= local.common.locals.tf_state_project_id
 }
 
 ## Definir el backend
@@ -23,8 +23,8 @@ generate "provider" {
 		}
 	}
 		provider "google" {
-		project     = local.region
-		region      = local.project_id
+		project     = local.tf_state_project_id
+		region      = local.region
 	}
 	EOF
 }
@@ -55,7 +55,7 @@ generate "backend" {
 		backend "gcs" {
 			bucket  = "terragunt_poc_states"
 			prefix  = "${path_relative_to_include()}/terraform.tfstate"
-			project = local.project_id
+			project = local.tf_state_project_id
  			}
 		}
 	}

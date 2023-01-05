@@ -10,5 +10,8 @@ locals {
 }
 
 inputs = {
-
+	project_id = local.project_id
+	env 	   = local.env
+	env_short  = local.env_short
+	name 	   = "my_kms"
 }
