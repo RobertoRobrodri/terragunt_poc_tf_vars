@@ -3,7 +3,7 @@ include "root" {
 }
 
 include "terraform" {
-	path = read_terragrunt_config(find_in_parent_folders("terraform.hcl"))
+	path = find_in_parent_folders("terraform.hcl")
 }
 
 locals {

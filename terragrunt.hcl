@@ -8,7 +8,7 @@ locals {
 generate "provider" {
 	path = "provider.tf"
   	if_exists = "overwrite_terragrunt"
-  	contents = << EOF
+  	contents = <<EOF
 	terraform {
 		required_providers {
 			google = {
@@ -28,7 +28,7 @@ generate "provider" {
 generate "backend" {
 	path = "backend.tf"
 	if_exists = "overwrite_terragrunt"
-	contents = << EOF
+	contents = <<EOF
 		terraform {
 			backend "gcs" {
 			bucket  = "terragunt_poc_states"
@@ -56,7 +56,6 @@ generate "backend" {
 	}
 }*/
 
-inputs = merge{
+inputs = merge(
 	local.common.locals,
-	
-}
+)
