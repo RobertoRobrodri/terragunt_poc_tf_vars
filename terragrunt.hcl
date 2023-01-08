@@ -1,8 +1,3 @@
-terraform {
-	source = ""
-}
-
-
 locals {
 	common 					= read_terragrunt_config(find_in_parent_folders("common.hcl"))
 	region 					= local.common.locals.gcp_region
