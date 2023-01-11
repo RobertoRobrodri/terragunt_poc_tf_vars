@@ -18,8 +18,9 @@ generate "provider" {
 		}
 	}
 		provider "google" {
-		project     = local.tf_state_project_id
-		region      = local.region
+		project     = "${local.tf_state_project_id}"
+		region      = "${local.region}"
+		
 	}
 	EOF
 }
